@@ -26,5 +26,6 @@ import org.json.simple.JSONObject;
 @Path("/login")
 @Produces(MediaType.APPLICATION_JSON)
 public class LogInService {
-    
+    @PersistenceContext(unitName = "Laboratorio-JPA")
+    EntityManager entityManager;    
 }
