@@ -40,35 +40,35 @@ public class LogInService {
         }
     } 
     
-    @POST
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response loginCompetitor(JSONObject json, @PathParam("id") Long id){// throws NotAuthorizedException{
-        
-        ArrayList<String> values=new ArrayList<String>();
-        Iterator ite= json.values().iterator();
-        while(ite.hasNext()){
-            values.add(ite.next().toString());
-        }
-        
-        String password= values.get(0);
-        String address=values.get(1);
-        String rta;
-        Competitor competitor2=entityManager.find(Competitor.class, id);
-               
-        if(competitor2.getAddress().equals(address)&
-            password.equals(competitor2.getPassword())){
-            rta="Esta haciendo el login";
-        }else{
-            rta="address or password invalid";
-//            throw new NotAuthorizedException("address or password invalid");
-        }        
-        
-        
-        
-      System.out.println("before return");
- 
-            return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(rta).build();
-        
-    }
+//    @POST
+//    @Path("")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response loginCompetitor(JSONObject json){// throws NotAuthorizedException{
+//        
+//        ArrayList<String> values=new ArrayList<String>();
+//        Iterator ite= json.values().iterator();
+//        while(ite.hasNext()){
+//            values.add(ite.next().toString());
+//        }
+//        
+//        String password= values.get(0);
+//        String address=values.get(1);
+//        String rta;
+//        Competitor competitor2=entityManager.find(Competitor.class, id);
+//               
+//        if(competitor2.getAddress().equals(address)&
+//            password.equals(competitor2.getPassword())){
+//            rta="Esta haciendo el login";
+//        }else{
+//            rta="address or password invalid";
+////            throw new NotAuthorizedException("address or password invalid");
+//        }        
+//        
+//        
+//        
+//      System.out.println("before return");
+// 
+//            return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(rta).build();
+//        
+//    }
 }

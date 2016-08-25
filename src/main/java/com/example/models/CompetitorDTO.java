@@ -28,6 +28,8 @@ public class CompetitorDTO {
     
     private String country;
     
+    private String password;
+    
     
     public CompetitorDTO(){
         
@@ -95,6 +97,12 @@ public class CompetitorDTO {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public void setPassword(String password){
+        this.password=password;
     }
     
 }
