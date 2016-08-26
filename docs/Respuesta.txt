@@ -1,0 +1,5 @@
+El efecto de haber aplicacdo la aplicacion @OneToMany en la entidad Competitor el efecto que tiene sobre la 
+tabla Producto es que agrega una nueva columna a dicha tabla que contendra el ID del competitor, dado que 
+en el producto la relacion con competitor sera @ManyToOne. Ademas al agregar cascade=ALL significa que la 
+persistencia se propagara en todas las operaciones del EntityManager hacia las entities relacionadas.
+jg.murillo10
