@@ -77,13 +77,11 @@ public class CompetitorService {
         String address=values.get(1);
         String query="select u from Competitor u where u.password='"+password+"' and u.address='"+address+"'";
         
-        System.out.println(query);
         Query q = entityManager.createQuery(query);
         List<Competitor> competitors = q.getResultList();
         if(competitors.isEmpty())
             throw new WebApplicationException((Response.Status.UNAUTHORIZED));     
         
-            System.out.println("before return");
         return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(rta).build();
         
         
