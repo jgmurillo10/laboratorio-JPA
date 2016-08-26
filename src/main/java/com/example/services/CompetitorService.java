@@ -18,6 +18,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.json.simple.JSONObject;
@@ -64,8 +65,8 @@ public class CompetitorService {
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(JSONObject json){
-        String rta="error, address or password invalid";
+    public Response login(JSONObject json)throws WebApplicationException{
+        String rta="haciendo login";
          ArrayList<String> values=new ArrayList<String>();
         Iterator ite= json.values().iterator();
         while(ite.hasNext()){
@@ -79,11 +80,8 @@ public class CompetitorService {
         System.out.println(query);
         Query q = entityManager.createQuery(query);
         List<Competitor> competitors = q.getResultList();
-        if(!competitors.isEmpty())
-        {
-            rta="esta haciendo login";
-            System.out.println("if");
-        }
+        if(competitors.isEmpty())
+            throw new WebApplicationException((Response.Status.UNAUTHORIZED));     
         
             System.out.println("before return");
         return Response.status(200).header("Access-Control-Allow-Origin", "*").entity(rta).build();
